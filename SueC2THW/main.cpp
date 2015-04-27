@@ -2,14 +2,12 @@
 //  main.cpp
 //  SueC2THW
 //
-//  Created by cj on 4/27/15.
-//  Copyright (c) 2015 KickinEspresso. All rights reserved.
-//
+
 
 #include <iostream>
 #include "string.h"
 #include <cassert>
-#include <algorithm>
+
 using namespace std;
 
 
@@ -98,7 +96,7 @@ public:
             this->items = new Element[this->size++];
         }else{
             Element* newItemsArray = new Element[this->size + 1];
-            copy(this->items, this->items + min(this->size, this->size + 1), newItemsArray);
+            copy(this->items, this->items + this->size, newItemsArray);
             delete[] this->items;
             this->items = newItemsArray;
             this->size++;
@@ -110,7 +108,7 @@ public:
     void removeItem(Element* item){
         if(this->size > 0){
             //TODO: Should find the element before removing it. If the element is not in the array the remove will fail: newItemsArray, this->size, data loss
-
+            //Acknoledging the risk
             Element* newItemsArray = new Element[this->size - 1];
             remove_copy(this->items, this->items + this->size, newItemsArray, *item);
             delete[] this->items;
